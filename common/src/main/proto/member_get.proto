@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+
+package com.adrmanagement.member.infrastructure.grpcservice;
+import "member.proto";
+
+option java_multiple_files = true;
+
+service MemberGetService {
+
+  rpc get(MemberGetRequest) returns (MemberGetResponse);
+
+}
+
+message MemberGetRequest {
+  repeated int64 memberId = 1;
+}
+
+message MemberGetResponse {
+  repeated MemberGrpcDto member = 1;
+}
+
+

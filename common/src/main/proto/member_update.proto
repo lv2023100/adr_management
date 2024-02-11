@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+import "generic_response.proto";
+package com.adrmanagement.member.infrastructure.grpcservice;
+
+option java_multiple_files = true;
+
+service MemberUpdateService {
+
+  rpc update(MemberUpdateRequest) returns (com.adrmanagement.common.infrastructure.grpcservice.GenericResponse);
+
+}
+
+message MemberUpdateRequest {
+  int64 memberId = 1;
+  string name = 2;
+  string phoneNumber = 3;
+  string email = 4;
+  string account = 5;
+  string password = 6;
+}

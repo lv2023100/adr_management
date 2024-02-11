@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+
+package com.adrmanagement.member.infrastructure.grpcservice;
+
+import "member.proto";
+import "generic_response.proto";
+
+
+option java_multiple_files = true;
+
+service MemberGetListService {
+
+  rpc get(MemberGetListRequest) returns (MemberGetListResponse);
+
+}
+
+message MemberGetListRequest {
+}
+
+message MemberGetListResponse {
+  com.adrmanagement.common.infrastructure.grpcservice.GenericResponse genericResponse = 1;
+  repeated MemberGrpcDto memberList = 2;
+}
+

@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+
+package com.adrmanagement.adr.infrastructure.grpcservice;
+
+option java_multiple_files = true;
+
+service AdrRecordItemGetListService {
+
+  rpc getAdrList(AdrRecordItemGetListRequest) returns (AdrRecordItemGetListResponse);
+
+}
+
+message AdrRecordItemGetListRequest {
+  int64 teamId = 1;
+}
+
+message AdrRecordItemGetResponse {
+  int64 adrId = 1;
+  string title = 2;
+  string editorMemberName = 3;
+  int64 teamId = 4;
+  string updateTime = 5;
+  string createTime = 6;
+  string progressStatus = 7;
+}
+
+message AdrRecordItemGetListResponse {
+  repeated AdrRecordItemGetResponse adrRecordItemGetResponse = 1;
+}

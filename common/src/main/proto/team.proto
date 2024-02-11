@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package com.adrmanagement.team.infrastructure.grpcservice;
+
+
+message TeamGrpcDto {
+  int64 teamId = 1;
+  string name = 2;
+  string createTime = 3;
+  string updateTime = 4;
+}

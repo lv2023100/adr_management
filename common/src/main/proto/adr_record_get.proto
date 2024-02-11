@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+
+package com.adrmanagement.adr.infrastructure.grpcservice;
+import "generic_response.proto";
+
+option java_multiple_files = true;
+
+service AdrRecordGetService {
+
+  rpc getAdr(AdrRecordGetRequest) returns (AdrRecordGetResponse);
+
+}
+
+message AdrRecordGetRequest {
+  int64 adrId = 1;
+}
+
+message AdrRecordGetResponse {
+  int64 adrId = 1;
+  string context = 2;
+  string title = 3;
+  repeated int64 decisionMemberIdList = 4;
+  string decision = 5;
+  int64 editorMemberId = 6;
+  string rationale = 7;
+  string consequences = 8;
+  int64 teamId = 9;
+  string createTime = 10;
+  string updateTime = 11;
+  string progressStatus = 12;
+  com.adrmanagement.common.infrastructure.grpcservice.GenericResponse genericResponse = 13;
+  repeated AdrRecordEventStoreResponse adrRecordEventStoreList = 14;
+}
+
+message AdrRecordEventStoreResponse {
+  int64 adrId = 1;
+  string context = 2;
+  string title = 3;
+  string eventName = 4;
+  string decision = 5;
+  int64 editorMemberId = 6;
+  string rationale = 7;
+  string consequences = 8;
+  string createTime = 9;
+  string updateTime = 10;
+  string progressStatus = 11;
+  repeated int64 decisionMemberIdList = 12;
+}
+

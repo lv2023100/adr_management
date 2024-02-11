@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+import "generic_response.proto";
+package com.adrmanagement.team.infrastructure.grpcservice;
+
+option java_multiple_files = true;
+
+service TeamUpdateService {
+
+  rpc update(TeamUpdateRequest) returns (com.adrmanagement.common.infrastructure.grpcservice.GenericResponse);
+
+}
+
+message TeamUpdateRequest {
+  int64 teamId = 1;
+  string name = 2;
+  repeated int64 memberIdList = 3;
+}

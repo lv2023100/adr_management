@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+
+package com.adrmanagement.team.infrastructure.grpcservice;
+
+import "team.proto";
+import "generic_response.proto";
+
+
+option java_multiple_files = true;
+
+service TeamGetListService {
+
+  rpc get(TeamGetListRequest) returns (TeamGetListResponse);
+
+}
+
+message TeamGetListRequest {
+}
+
+message TeamGetListResponse {
+  com.adrmanagement.common.infrastructure.grpcservice.GenericResponse genericResponse = 1;
+  repeated TeamGrpcDto teamList = 2;
+}
+

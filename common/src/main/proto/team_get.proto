@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+
+package com.adrmanagement.team.infrastructure.grpcservice;
+
+
+option java_multiple_files = true;
+
+service TeamGetService {
+
+  rpc get(TeamGetRequest) returns (TeamGetResponse);
+
+}
+
+message TeamGetRequest {
+  int64 teamId = 1;
+}
+
+message TeamGetResponse {
+  int64 teamId = 1;
+  string name = 2;
+  repeated int64 memberIdList = 3;
+}

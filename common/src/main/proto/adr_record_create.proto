@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+import "generic_response.proto";
+package com.adrmanagement.adr.infrastructure.grpcservice;
+
+option java_multiple_files = true;
+
+service AdrRecordCreateService {
+
+  rpc create(AdrRecordCreateRequest) returns (com.adrmanagement.common.infrastructure.grpcservice.GenericResponse);
+
+}
+
+message AdrRecordCreateRequest {
+  string context = 1;
+  string title = 2;
+  repeated int64 decisionMemberIdList = 3;
+  string decision = 4;
+  int64 editorMemberId = 5;
+  string rationale = 6;
+  string consequences = 7;
+  int64 teamId = 8;
+  string progressStatus = 9;
+  string editorMemberName = 10;
+}

@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+
+package com.adrmanagement.member.infrastructure.grpcservice;
+
+option java_multiple_files = true;
+
+service MemberGetByAccountService {
+
+  rpc get(MemberGetByAccountRequest) returns (MemberGetByAccountResponse);
+
+}
+
+message MemberGetByAccountRequest {
+  string account = 1;
+}
+
+message MemberGetByAccountResponse {
+  int64 memberId = 1;
+  string name = 2;
+  string password =3;
+  string account = 4;
+  string permission = 5;
+}
+

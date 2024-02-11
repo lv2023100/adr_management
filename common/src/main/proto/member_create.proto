@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+import "generic_response.proto";
+package com.adrmanagement.member.infrastructure.grpcservice;
+
+option java_multiple_files = true;
+
+service MemberCreateService {
+
+  rpc create(MemberCreateRequest) returns (com.adrmanagement.common.infrastructure.grpcservice.GenericResponse);
+
+}
+
+message MemberCreateRequest {
+  int64 memberId = 1;
+  string name = 2;
+  string phoneNumber = 3;
+  string email = 6;
+  string account = 7;
+  string password = 8;
+  string password2 = 9;
+}

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+import "generic_response.proto";
+package com.adrmanagement.adr.infrastructure.grpcservice;
+
+option java_multiple_files = true;
+
+service AdrRecordItemPublishService {
+
+  rpc publishByMemberId(AdrRecordItemPublishByMemberIdRequest) returns (com.adrmanagement.common.infrastructure.grpcservice.GenericResponse);
+
+}
+
+message AdrRecordItemPublishByMemberIdRequest {
+  int64 memberId = 1;
+  string name = 2;
+}

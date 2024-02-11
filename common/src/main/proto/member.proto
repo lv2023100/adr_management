@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package com.adrmanagement.member.infrastructure.grpcservice;
+
+
+message MemberGrpcDto {
+  int64 memberId = 1;
+  string name = 2;
+  string phoneNumber = 3;
+  string email = 4;
+  string account = 5;
+  string createTime = 6;
+  string updateTime = 7;
+  string permission = 8;
+}

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+import "generic_response.proto";
+package com.adrmanagement.team.infrastructure.grpcservice;
+
+option java_multiple_files = true;
+
+service TeamCreateService {
+
+  rpc create(TeamCreateRequest) returns (com.adrmanagement.common.infrastructure.grpcservice.GenericResponse);
+
+}
+
+message TeamCreateRequest {
+  string name = 1;
+  repeated int64 memberIdList = 2;
+}

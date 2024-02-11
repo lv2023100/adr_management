@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+import "generic_response.proto";
+package com.adrmanagement.adr.infrastructure.grpcservice;
+
+option java_multiple_files = true;
+
+service AdrRecordUpdateService {
+
+  rpc update(AdrRecordUpdateRequest) returns (com.adrmanagement.common.infrastructure.grpcservice.GenericResponse);
+
+}
+
+message AdrRecordUpdateRequest {
+  int64 adrId = 1;
+  string context = 2;
+  string title = 3;
+  repeated int64 decisionMemberIdList = 4;
+  string decision = 6;
+  int64 editorMemberId = 7;
+  string rationale = 8;
+  string consequences = 9;
+  string progressStatus = 10;
+  string editorMemberName = 11;
+}
