@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: adr-team
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 8082
+      targetPort: 8082
+    - name: grpc
+      port: 6567
+      targetPort: 6567
+  selector:
+    app: adr-team
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adr-team
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adr-team
+  template:
+    metadata:
+      labels:
+        app: adr-team
+    spec:
+      containers:
+        - name: adr-team
+          image: lv2023100/adr-team
+          imagePullPolicy: Always
+          tty: true
+          ports:
+            - name: http
+              protocol: TCP
+              containerPort: 8082
+            - name: grpc
+              protocol: TCP
+              containerPort: 6567

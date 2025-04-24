@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: adr-record
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 8081
+      targetPort: 8080
+    - name: grpc
+      port: 6565
+      targetPort: 6565
+    - name: axon-http
+      port: 8024
+      targetPort: 8024
+    - name: axon-grpc
+      port: 8124
+      targetPort: 8124
+  selector:
+    app: adr-record
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adr-record
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adr-record
+  template:
+    metadata:
+      labels:
+        app: adr-record
+    spec:
+      containers:
+        - name: adr-record
+          image: lv2023100/adr-record
+          imagePullPolicy: Always
+          tty: true
+          ports:
+            - name: http
+              protocol: TCP
+              containerPort: 8080
+            - name: grpc
+              protocol: TCP
+              containerPort: 6565
+        - name: axon-server
+          image:  axoniq/axonserver:latest
+          imagePullPolicy: Always
+          tty: true
+          ports:
+            - name: http
+              protocol: TCP
+              containerPort: 8024
+            - name: grpc
+              protocol: TCP
+              containerPort: 8124
